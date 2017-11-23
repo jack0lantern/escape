@@ -63,7 +63,6 @@ public class StartOptions : MonoBehaviour
 			//Call the StartGameInScene function to start game without loading a new scene.
 			StartGameInScene ();
 		}
-		started = true;
 	}
 
 	//Once the level has loaded, check if we want to call PlayLevelMusic
@@ -109,6 +108,7 @@ public class StartOptions : MonoBehaviour
 		animMenuAlpha.SetTrigger ("fade");
 		Invoke ("HideDelayed", fadeAlphaAnimationClip.length);
 		Debug.Log ("Game started in same scene! Put your game starting stuff here.");
+		started = true;
 	}
 		
 	public void PlayNewMusic ()
