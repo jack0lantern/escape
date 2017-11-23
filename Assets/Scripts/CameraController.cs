@@ -10,6 +10,15 @@ public class CameraController : MonoBehaviour {
 	public GameObject pause;
 
 	private GameObject player;
+	private bool frozen;
+
+	public void Freeze() {
+		frozen = true;
+	}
+
+	public void Unfreeze() {
+		frozen = false;
+	}
 
 	// Use this for initialization
 	void Start ()
@@ -20,14 +29,20 @@ public class CameraController : MonoBehaviour {
 	// Runs every frame, like update, but runs after all processing done in update
 	void LateUpdate ()
 	{
-		var md = new Vector2 (Input.GetAxisRaw ("Mouse X"), Input.GetAxisRaw ("Mouse Y"));
-		float moveFactor = sensitivity * smoothing;
-		md = Vector2.Scale (md, new Vector2 (moveFactor, moveFactor));
-		smoothV.x = Mathf.Lerp(smoothV.x, md.x, 1f / smoothing);
-		smoothV.y = Mathf.Lerp(smoothV.y, md.y, 1f / smoothing);
-		mouselook += smoothV;
+		if (!frozen) {
+			var md = new Vector2 (Input.GetAxisRaw ("Mouse X"), Input.GetAxisRaw ("Mouse Y"));
+			float moveFactor = sensitivity * smoothing;
+			md = Vector2.Scale (md, new Vector2 (moveFactor, moveFactor));
+			smoothV.x = Mathf.Lerp (smoothV.x, md.x, 1f / smoothing);
+			smoothV.y = Mathf.Lerp (smoothV.y, md.y, 1f / smoothing);
+			mouselook += smoothV;
 
-		transform.localRotation = Quaternion.AngleAxis(-mouselook.y, Vector3.right);
-		player.transform.localRotation = Quaternion.AngleAxis(mouselook.x, player.transform.up);
+			transform.localRotation = Quaternion.AngleAxis (-mouselook.y, Vector3.right);
+			player.transform.localRotation = Quaternion.AngleAxis (mouselook.x, player.transform.up);
+		}
+	}
+
+	public string toString() {
+		return "poop";
 	}
 }
