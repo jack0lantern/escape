@@ -7,19 +7,26 @@ public class Crosshair : MonoBehaviour
 
 	Rect crosshairRect;
 	Texture crosshairTexture;
-
-	void Start()
-	{
-		float crosshairSize = Screen.width * 0.1f * cursorSize / 100;
-		crosshairTexture = Resources.Load ("Textures/mousepointer") as Texture;
-		crosshairRect = new Rect (Screen.width / 2 - crosshairSize / 2,
-			Screen.height / 2 - crosshairSize / 2,
-			crosshairSize, crosshairSize);
-	}
+	private bool showCrosshair = false;
 
 	void OnGUI()
 	{
-		GUI.DrawTexture (crosshairRect, crosshairTexture);
+		if (showCrosshair) {
+			float crosshairSize = Screen.width * 0.1f * cursorSize / 100;
+			crosshairTexture = Resources.Load ("Textures/mousepointer") as Texture;
+			crosshairRect = new Rect (Screen.width / 2 - crosshairSize / 2,
+				Screen.height / 2 - crosshairSize / 2,
+				crosshairSize, crosshairSize);
+			GUI.DrawTexture (crosshairRect, crosshairTexture);
+		}
+	}
+
+	public void displayCrosshair() {
+		showCrosshair = true;
+	}
+
+	public void hideCrosshair() {
+		showCrosshair = false;
 	}
 }
 

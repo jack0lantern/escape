@@ -12,18 +12,25 @@ public class ShowPanels : MonoBehaviour
 	//Store a reference to the Game Object MenuPanel
 	public GameObject pausePanel;
 	//Store a reference to the Game Object PausePanel
-
+	public Crosshair crosshair;
+	//Store a reference to the crosshair to switch on and off
 
 	//Call this function to activate and display the Options panel during the main menu
 	public void ShowOptionsPanel ()
 	{
 		optionsPanel.SetActive (true);
 		optionsTint.SetActive (true);
+		crosshair.hideCrosshair ();
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 
 	//Call this function to deactivate and hide the Options panel during the main menu
 	public void HideOptionsPanel ()
 	{
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+		crosshair.displayCrosshair ();
 		optionsPanel.SetActive (false);
 		optionsTint.SetActive (false);
 	}
@@ -32,11 +39,17 @@ public class ShowPanels : MonoBehaviour
 	public void ShowMenu ()
 	{
 		menuPanel.SetActive (true);
+		crosshair.hideCrosshair ();
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 
 	//Call this function to deactivate and hide the main menu panel during the main menu
 	public void HideMenu ()
 	{
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+		crosshair.displayCrosshair ();
 		menuPanel.SetActive (false);
 	}
 	
@@ -45,11 +58,18 @@ public class ShowPanels : MonoBehaviour
 	{
 		pausePanel.SetActive (true);
 		optionsTint.SetActive (true);
+		crosshair.hideCrosshair ();
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 
 	//Call this function to deactivate and hide the Pause panel during game play
 	public void HidePausePanel ()
 	{
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+		Debug.Log (Cursor.lockState);
+		crosshair.displayCrosshair ();
 		pausePanel.SetActive (false);
 		optionsTint.SetActive (false);
 	}
