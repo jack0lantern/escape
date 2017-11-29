@@ -64,11 +64,13 @@ public class ShowPanels : MonoBehaviour
 	}
 
 	//Call this function to deactivate and hide the Pause panel during game play
+	//TODO: the cursor lockedstate stays locked provided the user never unfocuses the game.
+	//  maybe have a listener for getting focus? if we can't do that, we may have to 
+	//  check every frame if we should lock the cursor
 	public void HidePausePanel ()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
-		Debug.Log (Cursor.lockState);
 		crosshair.displayCrosshair ();
 		pausePanel.SetActive (false);
 		optionsTint.SetActive (false);
