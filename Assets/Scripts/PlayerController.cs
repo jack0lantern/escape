@@ -2,27 +2,34 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Person
 {
 
     public float speed = 7.0f;
     public Text winText;
-    public float reach = 1000f;
-    Camera cam;
+    public float reach = 10f;
+    public Camera mainCam;
 
     void Start()
     {
-        cam = GetComponent<Camera>();
-		if (winText)
+        if (winText)
         	winText.text = "";
     }
 
     void PerformInteraction()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, reach))
+        if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit, reach))
         {
             Debug.Log(hit.transform.name);
+            Collectible obj = hit.transform.GetComponent<Collectible>();
+            if (obj)
+            {
+                obj.Interact(this);
+            }
+            else
+            {
+            }
         }
     }
 
@@ -47,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Win Space"))
+		if (other.gameObject.CompareTag("Finish"))
 		{
 			winText.text = "You win!";
 		}
