@@ -22,11 +22,15 @@ public class Crosshair : MonoBehaviour
 	}
 
 	public void displayCrosshair() {
-		showCrosshair = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        showCrosshair = true;
 	}
 
 	public void hideCrosshair() {
-		showCrosshair = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        showCrosshair = false;
 	}
 }
 
