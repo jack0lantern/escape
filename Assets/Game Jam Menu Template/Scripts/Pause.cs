@@ -39,7 +39,7 @@ public class Pause : MonoBehaviour {
 		}
 	    else if (Input.GetKeyDown(KeyCode.I) && !isPaused && !startScript.inMainMenu)
         {
-            showPanels.togglePlayerInv();
+            showPanels.TogglePlayerInv();
         }
     }
 
