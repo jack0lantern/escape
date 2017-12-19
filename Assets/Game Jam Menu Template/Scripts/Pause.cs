@@ -37,10 +37,13 @@ public class Pause : MonoBehaviour {
 			UnPause ();
 			startScript.started = false;
 		}
-	
-	}
+	    else if (Input.GetKeyDown(KeyCode.I) && !isPaused && !startScript.inMainMenu)
+        {
+            showPanels.togglePlayerInv();
+        }
+    }
 
-	private void Freeze() {
+    private void Freeze() {
 		//Set isPaused to true
 		isPaused = true;
 		//Set time.timescale to 0, this will cause animations and physics to stop updating

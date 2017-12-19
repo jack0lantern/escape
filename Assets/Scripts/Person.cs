@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Person : MonoBehaviour
 {
-    private Collectible[] inventory;
+    public Collectible[] inventory;
     private int nextOpenInventory = 0;
 
     public Person()

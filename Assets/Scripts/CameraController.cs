@@ -41,8 +41,4 @@ public class CameraController : MonoBehaviour {
 			player.transform.localRotation = Quaternion.AngleAxis (mouselook.x, player.transform.up);
 		}
 	}
-
-	public string toString() {
-		return "poop";
-	}
 }

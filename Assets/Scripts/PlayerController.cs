@@ -9,6 +9,7 @@ public class PlayerController : Person
     public Text winText;
     public float reach = 10f;
     public Camera mainCam;
+    private ShowPanels showPanels;						//Reference to the ShowPanels script used to hide and show inv panel
 
     void Start()
     {

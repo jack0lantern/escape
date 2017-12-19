@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ShowPanels : MonoBehaviour
 {
@@ -13,7 +14,11 @@ public class ShowPanels : MonoBehaviour
 	public GameObject pausePanel;
 	//Store a reference to the Game Object PausePanel
 	public Crosshair crosshair;
-	//Store a reference to the crosshair to switch on and off
+    //Store a reference to the crosshair to switch on and off
+    public Person player;
+    //Store a reference to the player object to access inventory
+
+    private bool invShowing = false;
 
 	//Call this function to activate and display the Options panel during the main menu
 	public void ShowOptionsPanel ()
@@ -51,11 +56,34 @@ public class ShowPanels : MonoBehaviour
 		crosshair.hideCrosshair ();
 	}
 
-	//Call this function to deactivate and hide the Pause panel during game play
-	//TODO: the cursor lockedstate stays locked provided the user never unfocuses the game.
-	//  maybe have a listener for getting focus? if we can't do that, we may have to 
-	//  check every frame if we should lock the cursor
-	public void HidePausePanel ()
+    internal void showPlayerInv()
+    {
+        Debug.Log("Show inventory");
+    }
+
+    internal void hidePlayerInv()
+    {
+        Debug.Log("Hide inventory");
+    }
+
+    internal void togglePlayerInv()
+    {
+        invShowing = !invShowing;
+        if (invShowing)
+        {
+            showPlayerInv();
+        }
+        else
+        {
+            hidePlayerInv();
+        }
+    }
+
+    //Call this function to deactivate and hide the Pause panel during game play
+    //TODO: the cursor lockedstate stays locked provided the user never unfocuses the game.
+    //  maybe have a listener for getting focus? if we can't do that, we may have to 
+    //  check every frame if we should lock the cursor
+    public void HidePausePanel ()
 	{
 		crosshair.displayCrosshair ();
 		pausePanel.SetActive (false);
