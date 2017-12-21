@@ -20,6 +20,20 @@ public class CameraController : MonoBehaviour {
 		frozen = false;
 	}
 
+    public bool ToggleFreeze()
+    {
+        frozen = !frozen;
+        if (frozen)
+        {
+            Freeze();
+        }
+        else
+        {
+            Unfreeze();
+        }
+        return frozen;
+    }
+
 	// Use this for initialization
 	void Start ()
 	{

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class PlayerController : Person
@@ -19,7 +20,8 @@ public class PlayerController : Person
     void PerformInteraction()
     {
         RaycastHit hit;
-        if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit, reach))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, reach))
         {
             Collectible obj = hit.transform.GetComponent<Collectible>();
             if (obj)
