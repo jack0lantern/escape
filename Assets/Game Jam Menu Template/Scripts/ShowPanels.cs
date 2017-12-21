@@ -21,6 +21,7 @@ public class ShowPanels : MonoBehaviour
     //Store a reference to the Game Object InventoryPanel
 
     private bool invShowing = false;
+    private bool crosshairWasDisplayed;
 
 	//Call this function to activate and display the Options panel during the main menu
 	public void ShowOptionsPanel ()
@@ -55,7 +56,8 @@ public class ShowPanels : MonoBehaviour
 	{
 		pausePanel.SetActive (true);
 		optionsTint.SetActive (true);
-		crosshair.hideCrosshair ();
+        crosshairWasDisplayed = crosshair.crosshairDisplayed();
+        crosshair.hideCrosshair ();
 	}
 
     internal void ShowPlayerInv()
@@ -92,7 +94,8 @@ public class ShowPanels : MonoBehaviour
     //  check every frame if we should lock the cursor
     public void HidePausePanel ()
 	{
-		crosshair.showCrosshair();
+		if (crosshairWasDisplayed)
+            crosshair.showCrosshair();
 		pausePanel.SetActive (false);
 		optionsTint.SetActive (false);
 	}

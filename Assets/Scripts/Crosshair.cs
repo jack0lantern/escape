@@ -32,5 +32,10 @@ public class Crosshair : MonoBehaviour
         Cursor.visible = true;
         displayCrosshair = false;
 	}
+
+    public bool crosshairDisplayed()
+    {
+        return displayCrosshair;
+    }
 }
 
