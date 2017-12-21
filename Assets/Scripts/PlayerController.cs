@@ -9,7 +9,6 @@ public class PlayerController : Person
     public Text winText;
     public float reach = 10f;
     public Camera mainCam;
-    private ShowPanels showPanels;						//Reference to the ShowPanels script used to hide and show inv panel
 
     void Start()
     {
@@ -22,7 +21,6 @@ public class PlayerController : Person
         RaycastHit hit;
         if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit, reach))
         {
-            Debug.Log(hit.transform.name);
             Collectible obj = hit.transform.GetComponent<Collectible>();
             if (obj)
             {

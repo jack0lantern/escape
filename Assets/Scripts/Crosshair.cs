@@ -7,11 +7,11 @@ public class Crosshair : MonoBehaviour
 
 	Rect crosshairRect;
 	Texture crosshairTexture;
-	private bool showCrosshair = false;
+	private bool displayCrosshair = false;
 
 	void OnGUI()
 	{
-		if (showCrosshair) {
+		if (displayCrosshair) {
 			float crosshairSize = Screen.width * 0.1f * cursorSize / 100;
 			crosshairTexture = Resources.Load ("Textures/mousepointer") as Texture;
 			crosshairRect = new Rect (Screen.width / 2 - crosshairSize / 2,
@@ -21,16 +21,16 @@ public class Crosshair : MonoBehaviour
 		}
 	}
 
-	public void displayCrosshair() {
+	public void showCrosshair() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        showCrosshair = true;
+        displayCrosshair = true;
 	}
 
 	public void hideCrosshair() {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        showCrosshair = false;
+        displayCrosshair = false;
 	}
 }
 

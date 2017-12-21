@@ -36,8 +36,8 @@ public class Pause : MonoBehaviour {
 			//Call the UnPause function to unpause the game
 			UnPause ();
 			startScript.started = false;
-		}
-	    else if (Input.GetKeyDown(KeyCode.I) && !isPaused && !startScript.inMainMenu)
+        }
+        else if (Input.GetKeyDown(KeyCode.I) && !isPaused && !startScript.inMainMenu)
         {
             showPanels.TogglePlayerInv();
         }
@@ -73,4 +73,9 @@ public class Pause : MonoBehaviour {
 			cameraController.Unfreeze ();
 		}
 	}
+
+    public bool Paused()
+    {
+        return isPaused;
+    }
 }

@@ -17,6 +17,8 @@ public class ShowPanels : MonoBehaviour
     //Store a reference to the crosshair to switch on and off
     public Person player;
     //Store a reference to the player object to access inventory
+    public GameObject inventoryPanel;
+    //Store a reference to the Game Object InventoryPanel
 
     private bool invShowing = false;
 
@@ -44,7 +46,7 @@ public class ShowPanels : MonoBehaviour
 	//Call this function to deactivate and hide the main menu panel during the main menu
 	public void HideMenu ()
 	{
-		crosshair.displayCrosshair ();
+		crosshair.showCrosshair();
 		menuPanel.SetActive (false);
 	}
 	
@@ -59,14 +61,18 @@ public class ShowPanels : MonoBehaviour
     internal void ShowPlayerInv()
     {
         Debug.Log("Show inventory");
+        inventoryPanel.SetActive(true);
+        crosshair.hideCrosshair();
     }
 
     internal void HidePlayerInv()
     {
         Debug.Log("Hide inventory");
+        inventoryPanel.SetActive(false);
+        crosshair.showCrosshair();
     }
 
-    internal void TogglePlayerInv()
+    internal bool TogglePlayerInv()
     {
         invShowing = !invShowing;
         if (invShowing)
@@ -77,6 +83,7 @@ public class ShowPanels : MonoBehaviour
         {
             HidePlayerInv();
         }
+        return invShowing;
     }
 
     //Call this function to deactivate and hide the Pause panel during game play
@@ -85,7 +92,7 @@ public class ShowPanels : MonoBehaviour
     //  check every frame if we should lock the cursor
     public void HidePausePanel ()
 	{
-		crosshair.displayCrosshair ();
+		crosshair.showCrosshair();
 		pausePanel.SetActive (false);
 		optionsTint.SetActive (false);
 	}
