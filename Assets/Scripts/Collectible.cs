@@ -3,10 +3,14 @@ using System.Collections;
 
 public class Collectible : Interactable
 {
-	public Collectible()
-    {
+	public Sprite invSprite;
 
-    }
+	void Awake()
+	{
+		if (!invSprite) {
+			invSprite = Resources.Load<Sprite> ("Sprites/Items/notexture");
+		}
+	}
 
     // Bear in mind the parent has a method for Object who
     public void Interact(Person who)

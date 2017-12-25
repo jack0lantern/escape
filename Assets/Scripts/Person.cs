@@ -8,7 +8,7 @@ public class Person : MonoBehaviour
 
     public Person()
     {
-        inventory = new Collectible[8];
+        inventory = new Collectible[10];
     }
 
     public bool Obtain(Collectible thing)
@@ -28,6 +28,7 @@ public class Person : MonoBehaviour
     {
         if (indexOfItem < nextOpenInventory)
             nextOpenInventory = indexOfItem;
+		inventory [indexOfItem] = null;
         return null;
     }
 }

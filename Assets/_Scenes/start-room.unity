@@ -485,6 +485,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   speed: 7
   winText: {fileID: 1063056839}
   reach: 10
@@ -752,6 +754,7 @@ GameObject:
   - component: {fileID: 433924612}
   - component: {fileID: 433924611}
   - component: {fileID: 433924610}
+  - component: {fileID: 433924614}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -767,7 +770,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 433924608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -384, z: 0}
+  m_LocalPosition: {x: 0, y: -386, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 834101821}
@@ -844,6 +847,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 433924608}
+--- !u!114 &433924614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 433924608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd3a8e70070624428224b3d73b9b7c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 234423454}
 --- !u!1 &592881823
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62718bb88b780c74589e41ba09580c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invSprite: {fileID: 21300000, guid: ce44986c9d1dc4341ab800885a3a3131, type: 3}
 --- !u!1001 &679449242
 Prefab:
   m_ObjectHideFlags: 0
@@ -949,11 +965,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 22439792, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 592
+      value: 370.5
       objectReference: {fileID: 0}
     - target: {fileID: 22439792, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 384
+      value: 386
       objectReference: {fileID: 0}
     - target: {fileID: 22439792, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1121,7 +1137,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22496010, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 78.16856
+      value: 78.685234
       objectReference: {fileID: 0}
     - target: {fileID: 22491550, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1129,7 +1145,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22491550, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 34.10083
+      value: 34.617508
       objectReference: {fileID: 0}
     - target: {fileID: 22412784, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1137,7 +1153,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22412784, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -9.966904
+      value: -9.450226
       objectReference: {fileID: 0}
     - target: {fileID: 22470916, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1166,7 +1182,7 @@ Prefab:
     - target: {fileID: 11462810, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 234423454}
+      objectReference: {fileID: 0}
     - target: {fileID: 8286744, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
       propertyPath: m_Volume
       value: 0
@@ -1389,7 +1405,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1912,7 +1928,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1025219459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 592, y: 384, z: 0}
+  m_LocalPosition: {x: 370.5, y: 386, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1063056838}
