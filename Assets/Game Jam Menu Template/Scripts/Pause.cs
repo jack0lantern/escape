@@ -37,11 +37,7 @@ public class Pause : MonoBehaviour {
 			UnPause ();
 			startScript.started = false;
         }
-        else if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.E)) && !isPaused && !startScript.inMainMenu)
-        {
-            showPanels.TogglePlayerInv();
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
+        else if (Input.GetKeyDown(KeyCode.F))
         {
             cameraController.ToggleFreeze();
         }

@@ -5,11 +5,24 @@ public class Person : MonoBehaviour
 {
     public Collectible[] inventory;
     private int nextOpenInventory = 0;
+	private Collectible selected;
+	private int selectedIndex;
 
     public Person()
     {
         inventory = new Collectible[10];
     }
+
+	public void Select(int index)
+	{
+		selectedIndex = index;
+		selected = inventory [selectedIndex];
+	}
+
+	public Collectible Selected()
+	{
+		return selected;
+	}
 
     public bool Obtain(Collectible thing)
     {
