@@ -14,8 +14,19 @@ public class InventoryController : MonoBehaviour
 	public void ToggleSelected(GameObject border)
 	{
         //GameObject go = EventSystem.current.currentSelectedGameObject;
-        border.GetComponentInChildren<Image>().enabled = !border.GetComponentInChildren<Image>().enabled;
-        index = border.transform.GetSiblingIndex();
+        index = border.transform.parent.transform.GetSiblingIndex();
+        if (player.inventory[index])
+        {
+            border.GetComponentInChildren<Image>().enabled = !border.GetComponentInChildren<Image>().enabled;
+            if (border.GetComponentInChildren<Image>().enabled)
+            {
+                player.SelectItem(index);
+            }
+            else
+            {
+                player.DeselectItem();
+            }
+        }
     }
 
     private void UpdateInv()

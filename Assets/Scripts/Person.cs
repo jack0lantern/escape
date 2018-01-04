@@ -13,13 +13,19 @@ public class Person : MonoBehaviour
         inventory = new Collectible[10];
     }
 
-	public void Select(int index)
+	public void SelectItem(int index)
 	{
 		selectedIndex = index;
 		selected = inventory [selectedIndex];
 	}
 
-	public Collectible Selected()
+    public void DeselectItem()
+    {
+        selectedIndex = -1;
+        selected = null;
+    }
+
+    public Collectible Selected()
 	{
 		return selected;
 	}
