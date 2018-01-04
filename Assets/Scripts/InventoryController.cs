@@ -9,13 +9,13 @@ public class InventoryController : MonoBehaviour
 	private ShowPanels showPanels;						//Reference to the ShowPanels script used to hide and show UI panels
 	private StartOptions startScript;					//Reference to the StartButton script
 	private Pause pause;								//Reference to the Pause script
+    private int index = -1;
 
-	public void ToggleSelected(GameObject go)
+	public void ToggleSelected(GameObject border)
 	{
-        //int index = slot.transform.GetSiblingIndex();
         //GameObject go = EventSystem.current.currentSelectedGameObject;
-        Debug.Log(go.GetComponentInChildren<Image>().enabled);
-        go.GetComponentInChildren<Image>().enabled = true;
+        border.GetComponentInChildren<Image>().enabled = !border.GetComponentInChildren<Image>().enabled;
+        index = border.transform.GetSiblingIndex();
     }
 
     private void UpdateInv()
