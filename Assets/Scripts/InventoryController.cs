@@ -9,7 +9,7 @@ public class InventoryController : MonoBehaviour
 	private StartOptions startScript;					//Reference to the StartButton script
 	private Pause pause;								//Reference to the Pause script
 
-	public void HighlightSelected()
+	public void ToggleSelected()
 	{
 	}
 
@@ -17,10 +17,15 @@ public class InventoryController : MonoBehaviour
 	{
 		Transform inventorySlots = gameObject.transform.Find ("InventoryPanel").Find ("InventorySlots");
 		for (int i = 0; i < player.inventory.Length; ++i) {
-			Button butt = inventorySlots.GetChild (i).GetComponent<Button> ();
+            // 0: border img, 1: item img
+			Image slot = inventorySlots.GetChild (i).GetChild(1).GetComponent<Image> ();
 			if (player.inventory [i]) {
-				butt.image.sprite = player.inventory [i].invSprite;
+                slot.enabled = true;
+                slot.sprite = player.inventory [i].invSprite;
 			}
+            else {
+                slot.enabled = false;
+            }
 		}
 	}
 
