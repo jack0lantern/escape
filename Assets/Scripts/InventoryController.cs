@@ -11,20 +11,26 @@ public class InventoryController : MonoBehaviour
 	private Pause pause;								//Reference to the Pause script
     private int index = -1;
 
-	public void ToggleSelected(GameObject border)
+	public void ToggleSelected(GameObject slot)
 	{
+        Transform border = slot.transform.GetChild(0);
         //GameObject go = EventSystem.current.currentSelectedGameObject;
+        int oldIndex = index;
         index = border.transform.parent.transform.GetSiblingIndex();
         if (player.inventory[index])
         {
             border.GetComponentInChildren<Image>().enabled = !border.GetComponentInChildren<Image>().enabled;
+            Collectible tempItem = player.Selected();
+
+            // If something was selected before, disabled its border
+            if (oldIndex > -1)
+            {
+                slot.transform.parent.transform.GetChild(oldIndex).GetChild(0).GetComponent<Image>().enabled = false;
+            }
+            player.DeselectItem();
             if (border.GetComponentInChildren<Image>().enabled)
             {
                 player.SelectItem(index);
-            }
-            else
-            {
-                player.DeselectItem();
             }
         }
     }
