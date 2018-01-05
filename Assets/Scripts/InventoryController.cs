@@ -23,7 +23,7 @@ public class InventoryController : MonoBehaviour
             Collectible tempItem = player.Selected();
 
             // If something was selected before, disabled its border
-            if (oldIndex > -1)
+            if (oldIndex > -1 && index != oldIndex)
             {
                 slot.transform.parent.transform.GetChild(oldIndex).GetChild(0).GetComponent<Image>().enabled = false;
             }
