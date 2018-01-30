@@ -5,7 +5,7 @@ public class Person : MonoBehaviour
 {
     public Collectible[] inventory;
     private int nextOpenInventory = 0;
-	private int selectedIndex;
+	private int selectedIndex = -1;
 
     public Person()
     {
@@ -24,6 +24,8 @@ public class Person : MonoBehaviour
 
     public Collectible SelectedItem()
 	{
+        if (selectedIndex == -1)
+            return null;
 		return inventory[selectedIndex];
 	}
 
