@@ -23,7 +23,7 @@ public class PlayerController : Person
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, reach))
         {
-            Collectible obj = hit.transform.GetComponent<Collectible>();
+            Interactable obj = hit.transform.GetComponent<Interactable>();
             if (obj)
             {
                 obj.Interact(this);

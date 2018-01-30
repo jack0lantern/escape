@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour {
 	
 	}
 
-    public void Interact (Object who)
+    public virtual void Interact (Object who)
     {
         Debug.Log("Interact!");
     }
