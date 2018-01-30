@@ -13,7 +13,7 @@ public class Collectible : Interactable
 	}
 
     // Bear in mind the parent has a method for Object who
-    public void Interact(Person who)
+    public override void Interact(Person who)
     {
         Debug.Log("Collectible Interact!");
         if (!who.Obtain(this))

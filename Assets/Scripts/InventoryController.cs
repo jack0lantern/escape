@@ -20,7 +20,7 @@ public class InventoryController : MonoBehaviour
         if (player.inventory[index])
         {
             border.GetComponent<Image>().enabled = !border.GetComponent<Image>().enabled;
-            Collectible tempItem = player.Selected();
+            Collectible tempItem = player.SelectedItem();
 
             // If something was selected before, disabled its border
             if (oldIndex > -1 && index != oldIndex)
@@ -40,13 +40,16 @@ public class InventoryController : MonoBehaviour
 		Transform inventorySlots = gameObject.transform.Find ("InventoryPanel").Find ("InventorySlots");
 		for (int i = 0; i < player.inventory.Length; ++i) {
             // 0: border img, 1: item img
-			Image slot = inventorySlots.GetChild (i).GetChild(1).GetComponent<Image> ();
-			if (player.inventory [i]) {
-                slot.enabled = true;
-                slot.sprite = player.inventory [i].invSprite;
+			Transform slot = inventorySlots.GetChild (i);
+            Image img = slot.Find("Item").GetComponent<Image>();
+			if (player.inventory [i])
+            {
+                img.enabled = true;
+                img.sprite = player.inventory [i].invSprite;
 			}
             else {
-                slot.enabled = false;
+                img.enabled = false;
+                slot.Find("Border").GetComponent<Image>().enabled = false;
             }
 		}
 	}

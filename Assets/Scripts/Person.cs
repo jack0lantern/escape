@@ -5,7 +5,6 @@ public class Person : MonoBehaviour
 {
     public Collectible[] inventory;
     private int nextOpenInventory = 0;
-	private Collectible selected;
 	private int selectedIndex;
 
     public Person()
@@ -16,19 +15,22 @@ public class Person : MonoBehaviour
 	public void SelectItem(int index)
 	{
 		selectedIndex = index;
-		selected = inventory [selectedIndex];
 	}
 
     public void DeselectItem()
     {
         selectedIndex = -1;
-        selected = null;
     }
 
-    public Collectible Selected()
+    public Collectible SelectedItem()
 	{
-		return selected;
+		return inventory[selectedIndex];
 	}
+
+    public int SelectedIndex()
+    {
+        return selectedIndex;
+    }
 
     public bool Obtain(Collectible thing)
     {
@@ -43,11 +45,12 @@ public class Person : MonoBehaviour
         return true;
     }
 
-    public Collectible Drop(int indexOfItem)
+    public Collectible Drop()
     {
-        if (indexOfItem < nextOpenInventory)
-            nextOpenInventory = indexOfItem;
-		inventory [indexOfItem] = null;
+        if (selectedIndex < nextOpenInventory)
+            nextOpenInventory = selectedIndex;
+		inventory [selectedIndex] = null;
+        DeselectItem();
         return null;
     }
 }

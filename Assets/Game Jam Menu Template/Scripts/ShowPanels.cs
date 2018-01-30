@@ -62,14 +62,12 @@ public class ShowPanels : MonoBehaviour
 
     internal void ShowPlayerInv()
     {
-        Debug.Log("Show inventory");
         inventoryPanel.SetActive(true);
         crosshair.hideCrosshair();
     }
 
     internal void HidePlayerInv()
     {
-        Debug.Log("Hide inventory");
         inventoryPanel.SetActive(false);
         crosshair.showCrosshair();
     }
