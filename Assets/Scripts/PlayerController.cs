@@ -8,11 +8,18 @@ public class PlayerController : Person
 
     public float speed = 7.0f;
     public Text winText;
-    public float reach = 10f;
+    public float reach = 10.0f;
     public Camera mainCam;
+    private Rigidbody rb;
+    public float jump = 10.0f;
+    private float disttoground = 0;
+    
 
     void Start()
     {
+        disttoground = (GetComponent<CapsuleCollider>().height) / 2 ;
+        rb = GetComponent<Rigidbody>();
+
         if (winText)
         	winText.text = "";
     }
@@ -34,6 +41,14 @@ public class PlayerController : Person
         }
     }
 
+    void jumping()
+    {
+        if (Input.GetKey(KeyCode.Space) && isGrounded())
+        {
+            rb.velocity += new Vector3(0, jump, 0);
+        }
+    }
+
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -45,12 +60,17 @@ public class PlayerController : Person
     // Moves as fast as frame rate to smooth moving
     void FixedUpdate()
     {
+        Debug.Log(isGrounded());
 		float moveHorizontal = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
 		float moveVertical = Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
 		transform.Translate (movement);
+        jumping();
+        
+
+        
     }
 
 	void OnTriggerEnter(Collider other)
@@ -60,4 +80,9 @@ public class PlayerController : Person
 			winText.text = "You win!";
 		}
 	}
+
+   bool isGrounded()
+    {
+       return Physics.Raycast(transform.position, Vector3.down, disttoground);
+    }
 }
