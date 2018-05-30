@@ -63,7 +63,7 @@ public class InventoryController : MonoBehaviour
 		
 	void Update()
 	{
-		if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.E)) && !pause.Paused() && !startScript.inMainMenu)
+		if ((Input.GetKeyDown(KeyBindings.InventoryKey) || Input.GetKeyDown(KeyBindings.InventoryKeyAlt)) && !pause.Paused() && !startScript.inMainMenu)
 		{
 			showPanels.TogglePlayerInv();
 		}
