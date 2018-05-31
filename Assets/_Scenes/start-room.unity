@@ -8289,6 +8289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 234423454}
+  cameraController: {fileID: 871828171}
 --- !u!95 &2049423448
 Animator:
   serializedVersion: 3

@@ -10,8 +10,10 @@ public class InventoryController : MonoBehaviour
 	private StartOptions startScript;					//Reference to the StartButton script
 	private Pause pause;								//Reference to the Pause script
     private int index = -1;
+    private bool frozen = false;
+    public CameraController cameraController;
 
-	public void ToggleSelected(GameObject slot)
+    public void ToggleSelected(GameObject slot)
 	{
         Transform border = slot.transform.Find("Border");
         //GameObject go = EventSystem.current.currentSelectedGameObject;
@@ -66,6 +68,15 @@ public class InventoryController : MonoBehaviour
 		if ((Input.GetKeyDown(KeyBindings.InventoryKey) || Input.GetKeyDown(KeyBindings.InventoryKeyAlt)) && !pause.Paused() && !startScript.inMainMenu)
 		{
 			showPanels.TogglePlayerInv();
+            frozen = !frozen;
+            if (frozen)
+            {
+                cameraController.Freeze();
+            }
+            else
+            {
+                cameraController.Unfreeze();
+            }
 		}
 
 		UpdateInv ();
