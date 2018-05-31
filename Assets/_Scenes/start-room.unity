@@ -1467,6 +1467,7 @@ MonoBehaviour:
   winText: {fileID: 1063056839}
   reach: 10
   mainCam: {fileID: 871828169}
+  jump: 4
 --- !u!1 &242851793
 GameObject:
   m_ObjectHideFlags: 0
